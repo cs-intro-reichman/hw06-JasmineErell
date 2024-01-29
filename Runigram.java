@@ -143,14 +143,15 @@ public class Runigram {
 	 */
 	public static Color[][] grayScaled(Color[][] image) 
 	{
+		Color[][] newImage = new Color[image.length][image[0].length];
 		for (int i =0; i<image.length; i++)
 		{
 			for(int j =0; j<image[0].length; j++)
 			{
-				image[i][j] = luminance(image[i][j]);
+				newImage[i][j] = luminance(image[i][j]);
 			}
 		}
-		return image;
+		return newImage;
 	}	
 	
 	/**
