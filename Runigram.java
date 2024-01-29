@@ -103,13 +103,10 @@ public class Runigram {
 		int rows = image.length;
 		int cols = image[0].length;
 		Color [][] flipped = new Color[rows][cols];
-		System.out.println(cols);
-		System.out.println(rows);
 		for(int i =0; i<rows; i++)
 		{
 			for(int j = 0; j<cols; j++)
 			{
-				// ystem.out.println( "rows"+ i+ "cols" + j);
 				flipped[i][j] = image[i][cols-j-1];
 			}
 		}
@@ -136,10 +133,7 @@ public class Runigram {
 	// lum = 0.299 * r + 0.587 * g + 0.114 * b, and returns a Color object consisting
 	// the three values r = lum, g = lum, b = lum.
 	public static Color luminance(Color pixel) {
-		double red = (pixel.getRed()*0.299);
-		double green = pixel.getGreen()*0.587;
-		double blue = pixel.getBlue()*0.114;
-		int lum = (int)red + (int)green + (int)blue;
+		int lumC = (int)((0.299 * pixel.getRed()) + (0.587 * pixel.getGreen()) + (0.114 * pixel.getBlue()));
 		Color grey = new Color(lum,lum,lum);
 		return grey;
 	}
