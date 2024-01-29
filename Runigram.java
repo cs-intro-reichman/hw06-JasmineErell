@@ -10,10 +10,11 @@ public class Runigram {
 		//// Hide / change / add to the testing code below, as needed.
 		
 		// Tests the reading and printing of an image:	
-		Color[][] tinypic = read("tinypic.ppm");
-		System.out.println(mix(null, null, 0));
-		// print(scaled(tinypic, 3, 5));
+		Color[][] tinypic = read("ironman.ppm");
+		// System.out.println(mix(null, null, 0));
 		// print(tinypic);
+		print(flippedHorizontally(tinypic));
+		
 		// Color test1 = new Color(100, 40, 100);
 
 		// Color test2 = new Color(200, 20, 40);
@@ -99,12 +100,17 @@ public class Runigram {
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) 
 	{
-		Color [][] flipped = new Color[image[0].length][image[0].length];
-		for(int i =0; i<flipped[0].length; i++)
+		int rows = image.length;
+		int cols = image[0].length;
+		Color [][] flipped = new Color[rows][cols];
+		System.out.println(cols);
+		System.out.println(rows);
+		for(int i =0; i<rows; i++)
 		{
-			for(int j = 0; j<flipped[0].length; j++)
+			for(int j = 0; j<cols; j++)
 			{
-				flipped[i][j] = image[i][flipped.length-1-j];
+				// ystem.out.println( "rows"+ i+ "cols" + j);
+				flipped[i][j] = image[i][cols-j-1];
 			}
 		}
 		return flipped;
@@ -224,7 +230,7 @@ public class Runigram {
 		for(int i =0; i<n; i++)
 		{
 			double alpha = ((double)(n-i)/(double)n);
-			System.out.println(alpha);
+			// System.out.println(alpha);
 			newImage = blend(source, target, alpha);
 			display(target);
 			StdDraw.pause(300);	
