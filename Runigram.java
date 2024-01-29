@@ -220,24 +220,14 @@ public class Runigram {
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) 
 	{
-		target = scaled(target, source[0].length, source.length);// scaling the target to the dimensions of the source image.
-		Color [][] newImage = new Color[source.length][source[0].length];
-		for(int i =0; i<n; i++)
-		{
-			double alpha = ((double)(n-i)/(double)n);
-			// System.out.println(alpha);
-			newImage = blend(source, target, alpha);
-			display(target);
-			StdDraw.pause(300);	
+		Color[][] tergetEdit = scaled(target, source[0].length, source.length);
+		Color[][] morphImage = new Color[source.length][source[0].length];
+		for(int i = 0; i < n; i++)
+		 {
+			morphImage = blend(source, tergetEdit, ((n-i)/n));
+			display(morphImage);
+			StdDraw.pause(500);
 		}
-		// for(int i = n ; i>=0; i--)
-		// {
-		// 	double alpha = i/n;
-		// 	target = blend(source, target, alpha);
-		// 	display(target);
-		// 	StdDraw.pause(300);
-		// }
-		
 	}
 	
 	/** Creates a canvas for the given image. */
